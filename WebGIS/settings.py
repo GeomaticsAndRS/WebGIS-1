@@ -61,17 +61,7 @@ WSGI_APPLICATION = 'WebGIS.wsgi.application'
 try:
     from .dbset import DATABASES
 except:
-    # at home
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'NAME': 'WG',
-            'USER': 'pguser',
-            'PASSWORD': 'topsecret',
-            'HOST': 'localhost',
-            'PORT': '5432',
-            }
-    }
+    DATABASES = {}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

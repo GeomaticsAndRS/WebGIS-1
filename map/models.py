@@ -7,6 +7,9 @@ class Layer(models.Model):
     geom_type = models.CharField(max_length=50)
     encoding = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.layername
+
 
 class Attribute(models.Model):
     layer = models.ForeignKey(Layer)
@@ -14,6 +17,9 @@ class Attribute(models.Model):
     type = models.IntegerField()
     width = models.IntegerField()
     precision = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 
 class Feature(models.Model):
@@ -26,8 +32,14 @@ class Feature(models.Model):
 
     objects = models.GeoManager()
 
+    def __str__(self):
+        return self.layer.layername
+
 
 class AttributeValue(models.Model):
     feature = models.ForeignKey(Feature)
     attribute = models.ForeignKey(Attribute)
     value = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.value
