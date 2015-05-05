@@ -1,8 +1,27 @@
 from django.contrib import admin
-from .models import Attribute, Feature, Layer, AttributeValue
+from .models import Attribute, Points, Layer, AttributeValue
+
+
+class AttributeInline(admin.TabularInline):
+    model = Attribute
+
+
+class LayerAdmin(admin.ModelAdmin):
+    inlines = [
+        AttributeInline,
+        ]
+
+
+class AttributeValueInline(admin.TabularInline):
+    model = AttributeValue
+
+
+class PointsAdmin(admin.ModelAdmin):
+    inlines = [
+        AttributeValueInline,
+    ]
+
 
 # Register your models here.
-admin.site.register(Attribute)
-admin.site.register(Feature)
-admin.site.register(Layer)
-admin.site.register(AttributeValue)
+admin.site.register(Points, PointsAdmin)
+admin.site.register(Layer, LayerAdmin)
