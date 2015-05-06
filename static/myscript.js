@@ -10,3 +10,12 @@ var map = new ol.Map({
           zoom: 4
         })
       });
+
+var vector = new ol.layer.Vector({
+    source: new ol.source.GeoJSON({
+        url: '/map/static_geojson',
+        projection: 'EPSG:3857'
+    })
+});
+
+map.addLayer(vector);
