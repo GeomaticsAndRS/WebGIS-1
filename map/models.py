@@ -27,7 +27,7 @@ class Points(models.Model):
 
 
 class AttributeValue(models.Model):
-    feature = models.ForeignKey(Points)
+    point = models.ForeignKey(Points)
     attribute = models.ForeignKey(Attribute)
     value = models.CharField(max_length=255, blank=True, null=True)
 
