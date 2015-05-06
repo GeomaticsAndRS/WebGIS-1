@@ -1,7 +1,7 @@
 from django.contrib.gis.db import models
 
 
-class Layer(models.Model):
+class PointLayer(models.Model):
     layer_name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -9,7 +9,7 @@ class Layer(models.Model):
 
 
 class Attribute(models.Model):
-    layer = models.ForeignKey(Layer)
+    layer = models.ForeignKey(PointLayer)
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Attribute(models.Model):
 
 
 class Points(models.Model):
-    layer = models.ForeignKey(Layer)
+    layer = models.ForeignKey(PointLayer)
     geom_point = models.PointField(srid=4326, blank=True, null=True)
 
     objects = models.GeoManager()

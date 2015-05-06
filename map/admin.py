@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Attribute, Points, Layer, AttributeValue
+from .models import Attribute, PointLayer, AttributeValue
 
 
 class AttributeInline(admin.TabularInline):
@@ -23,5 +23,4 @@ class PointsAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Points, PointsAdmin)
-admin.site.register(Layer, LayerAdmin)
+admin.site.register(PointLayer, LayerAdmin)
