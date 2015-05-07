@@ -10,3 +10,7 @@ def map_view(request):
 
 def static_geojson(request):
     return HttpResponse(serialize('geojson', Points.objects.all()), content_type='application/json')
+
+
+def main_page(request):
+    return render_to_response('main_page.html')
